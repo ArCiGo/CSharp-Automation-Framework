@@ -1,0 +1,31 @@
+﻿using OpenQA.Selenium;
+using PageObjectModel.Pages;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PageObjectModel.Components.Home
+{
+    public class HomeBodyComponent : GoogleComponent
+    {
+        // Attributes
+
+        // Elements
+
+        public IWebElement InputSearchField => Driver.FindElement(By.XPath("//form[@action='/search']/descendant::input[@name='q']"));
+
+        // Constructor
+
+        public HomeBodyComponent(IWebDriver driver) : base(driver) { }
+
+        // Actions
+
+        public GoogleResultsPage FillSearchForm(string search)
+        {
+            InputSearchField.Clear();
+            InputSearchField.SendKeys(search + Keys.Enter);
+
+            return new GoogleResultsPage(Driver);
+        }
+    }
+}
