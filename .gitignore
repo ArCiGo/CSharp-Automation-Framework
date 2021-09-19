@@ -700,6 +700,6 @@ obj/
 # Additional files built by Visual Studio
 
 ### Other files and folders excluded ###
-Tests/Data/
+Tests/Data/*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore,aspnetcore,csharp

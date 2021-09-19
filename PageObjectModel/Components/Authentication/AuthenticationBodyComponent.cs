@@ -1,6 +1,7 @@
 ﻿using NLog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using PageObjectModel.Pages;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,15 +16,10 @@ namespace PageObjectModel.Components.Authentication
 
         // Elements
         public IWebElement TitleLabel => Driver.FindElement(By.XPath("//h1[@class='page-heading']"));
-
-        public IWebElement EmailAddressCreateTextInput => Driver.FindElement(By.Id("email_create"));
-
+        public IWebElement EmailAddressCreateInput => Driver.FindElement(By.Id("email_create"));
         public IWebElement CreateAccountButton => Driver.FindElement(By.Id("SubmitCreate"));
-
-        public IWebElement EmailAddressAlreadyTextInput => Driver.FindElement(By.XPath("//h3[contains(text(), 'Already')]/following-sibling::div/div[@class='form-group']/input[@id='email']"));
-
-        public IWebElement PasswordAlreadyTextInput => Driver.FindElement(By.XPath("//h3[contains(text(), 'Already')]/following-sibling::div/div[@class='form-group'][2]/span/input[@id='passwd']"));
-
+        public IWebElement EmailAddressAlreadyInput => Driver.FindElement(By.XPath("//h3[contains(text(), 'Already')]/following-sibling::div/div[@class='form-group']/input[@id='email']"));
+        public IWebElement PasswordAlreadyInput => Driver.FindElement(By.XPath("//h3[contains(text(), 'Already')]/following-sibling::div/div[@class='form-group'][2]/span/input[@id='passwd']"));
         public IWebElement SignInButton => Driver.FindElement(By.Id("SubmitLogin"));
 
         // Constructor
@@ -52,26 +48,33 @@ namespace PageObjectModel.Components.Authentication
             }
         }
 
-        public void CreateAccount(string email)
+        public void FillCreateAccountForm(string email)
         {
-            EmailAddressCreateTextInput.Clear();
-            EmailAddressCreateTextInput.SendKeys(email);
-            CreateAccountButton.Click();
-
-            return null;
+            EmailAddressCreateInput.Clear();
+            EmailAddressCreateInput.SendKeys(email);
         }
 
-        public void SignIn(string email, string password)
+        public AutomationPracticeCreateAccountPage ClickOnCreateAccountButton()
         {
-            EmailAddressAlreadyTextInput.Clear();
-            EmailAddressAlreadyTextInput.SendKeys(email);
-            
-            PasswordAlreadyTextInput.Clear();
-            PasswordAlreadyTextInput.SendKeys(password);
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("SubmitCreate"))).Click(); ;
 
-            SignInButton.Click();
+            return new AutomationPracticeCreateAccountPage(Driver);
+        }
 
-            return null;
+        public void FillSignInForm(string email, string password)
+        {
+            EmailAddressAlreadyInput.Clear();
+            EmailAddressAlreadyInput.SendKeys(email);
+
+            PasswordAlreadyInput.Clear();
+            PasswordAlreadyInput.SendKeys(password);
+        }
+
+        public AutomationPracticeMyAccountPage ClickOnSignInButton()
+        {
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("SubmitLogin"))).Click();
+
+            return new AutomationPracticeMyAccountPage(Driver);
         }
     }
 }

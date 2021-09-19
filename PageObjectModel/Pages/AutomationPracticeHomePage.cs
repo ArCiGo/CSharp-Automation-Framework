@@ -35,5 +35,10 @@ namespace PageObjectModel.Pages
         {
             return homeHeaderComponent.IsLoaded();
         }
+
+        public AutomationPracticeAuthenticationPage ClickOnSignInButton()
+        {
+            return homeHeaderComponent.ClickOnSignInButton();
+        }
     }
 }
