@@ -5,11 +5,11 @@ using System.Text;
 
 namespace PageObjectModel.Components
 {
-    public class GoogleComponent
+    public class AutomationPracticeComponent
     {
         protected IWebDriver Driver { get; set; }
 
-        public GoogleComponent(IWebDriver driver)
+        public AutomationPracticeComponent(IWebDriver driver)
         {
             Driver = driver;
         }

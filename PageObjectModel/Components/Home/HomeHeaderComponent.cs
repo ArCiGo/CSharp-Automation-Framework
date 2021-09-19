@@ -1,39 +1,40 @@
 ﻿using NLog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using PageObjectModel.Pages;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PageObjectModel.Components.Results
+namespace PageObjectModel.Components.Home
 {
-    public class ResultsBodyComponent : GoogleComponent
+    public class HomeHeaderComponent : AutomationPracticeComponent
     {
         // Attributes
-
         private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
 
         // Elements
 
-        public IWebElement ResultsLabel => Driver.FindElement(By.XPath("//div[@id='result-stats']"));
+        public IWebElement AutomationPracticeLogoImg => Driver.FindElement(By.XPath("//img[@class='logo img-responsive']"));
+
+        public IWebElement SignInButton => Driver.FindElement(By.XPath("//a[@class='login']"));
 
         // Constructor
 
-        public ResultsBodyComponent(IWebDriver driver) : base(driver) 
+        public HomeHeaderComponent(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
         }
 
         // Actions
-
-        public Boolean ResultsLabelIsLoaded()
+        public Boolean IsLoaded()
         {
             try
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='result-stats']")));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("")));
 
-                return ResultsLabel.Displayed;
+                return AutomationPracticeLogoImg.Displayed;
             }
             catch (Exception ex)
             {
@@ -44,6 +45,13 @@ namespace PageObjectModel.Components.Results
 
                 return false;
             }
+        }
+
+        public AutomationPracticeAuthenticationPage ClickOnSignInButton()
+        {
+            SignInButton.Click();
+
+            return new AutomationPracticeAuthenticationPage(Driver);
         }
     }
 }
