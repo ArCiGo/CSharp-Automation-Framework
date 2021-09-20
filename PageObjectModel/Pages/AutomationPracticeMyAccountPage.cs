@@ -25,7 +25,7 @@ namespace PageObjectModel.Pages
         }
 
         // Actions
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
             return myAccountBodyComponent.IsLoaded();
         }

@@ -26,6 +26,11 @@ namespace PageObjectModel.Pages
         }
 
         // Actions
+        public bool IsLoaded()
+        {
+            return createAccountBodyComponent.IsLoaded();
+        }
+
         public void FillRegisterForm(List<Person> personalData)
         {
             createAccountBodyComponent.FillRegisterForm(personalData);

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace PageObjectModel.Pages
 {
-    class AutomationPracticeHomePage : BasePage
+    public class AutomationPracticeHomePage : BasePage
     {
         // Attributes
         private readonly Logger logger = LogManager.GetCurrentClassLogger();

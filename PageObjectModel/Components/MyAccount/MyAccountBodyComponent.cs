@@ -14,7 +14,6 @@ namespace PageObjectModel.Components.MyAccount
         private readonly WebDriverWait wait;
 
         // Elements
-        public IWebElement TitleLabel => Driver.FindElement(By.ClassName("page-heading"));
 
         // Constructor
         public MyAccountBodyComponent(IWebDriver driver) : base(driver)
@@ -23,11 +22,11 @@ namespace PageObjectModel.Components.MyAccount
         }
 
         // Actions
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
             try
             {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("page-heading"))).Displayed;
+                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'My acc')]"))).Displayed;
             }
             catch (Exception ex)
             {

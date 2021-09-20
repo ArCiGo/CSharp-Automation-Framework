@@ -29,13 +29,11 @@ namespace PageObjectModel.Components.Authentication
         }
 
         // Actions
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
             try
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading']")));
-
-                return TitleLabel.Displayed;
+                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'Authen')]"))).Displayed;
             }
             catch (Exception ex)
             {

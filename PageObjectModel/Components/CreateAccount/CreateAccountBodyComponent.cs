@@ -66,11 +66,28 @@ namespace PageObjectModel.Components.CreateAccount
         }
 
         // Actions
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
             try
             {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("page-header"))).Displayed;
+                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'Create')]"))).Displayed;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Source);
+                logger.Error(ex.StackTrace);
+                logger.Error(ex.InnerException);
+                logger.Error(ex.Message);
+
+                return false;
+            }
+        }
+
+        public bool TitleRadioButtonsIsLoaded()
+        {
+            try
+            {
+                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("id_gender1"))).Displayed;
             }
             catch (Exception ex)
             {
@@ -145,6 +162,8 @@ namespace PageObjectModel.Components.CreateAccount
 
         private void SelectTitle(Title title)
         {
+            TitleRadioButtonsIsLoaded();
+
             switch (title)
             {
                 case Title.Mr:
@@ -166,8 +185,6 @@ namespace PageObjectModel.Components.CreateAccount
 
         private void SetDay(string day)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("days")));
-
             DaySelectElement = new SelectElement(DaySelect);
             DayOptions = DaySelectElement.Options;
 
@@ -182,24 +199,20 @@ namespace PageObjectModel.Components.CreateAccount
 
         private void SetMonth(string month)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("months")));
-
             MonthSelectElement = new SelectElement(MonthSelect);
             MonthOptions = MonthSelectElement.Options;
 
             foreach (IWebElement item in MonthOptions)
             {
-                if (item.Text.Contains(month))
+                if (item.Text.Trim().Contains(month))
                 {
-                    MonthSelectElement.SelectByText(month);
+                    MonthSelectElement.SelectByText(month, true);
                 }
             }
         }
 
         private void SetYear(string year)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("years")));
-
             YearSelectElement = new SelectElement(YearSelect);
             YearOptions = YearSelectElement.Options;
 
@@ -214,8 +227,6 @@ namespace PageObjectModel.Components.CreateAccount
 
         private void SetState(string state)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("id_state")));
-
             StateSelectElement = new SelectElement(StateSelect);
             StateOptions = StateSelectElement.Options;
 
@@ -230,8 +241,6 @@ namespace PageObjectModel.Components.CreateAccount
 
         private void SetCountry(string country) 
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("id_country")));
-
             CountrySelectElement = new SelectElement(CountrySelect);
             CountryOptions = CountrySelectElement.Options;
 

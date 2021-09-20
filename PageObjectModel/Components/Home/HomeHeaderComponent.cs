@@ -14,9 +14,7 @@ namespace PageObjectModel.Components.Home
         private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
 
-        // Elements
-        public IWebElement AutomationPracticeLogoImg => Driver.FindElement(By.XPath("//img[@class='logo img-responsive']"));
-        
+        // Elements        
         public IWebElement SignInButton => Driver.FindElement(By.XPath("//a[@class='login']"));
 
         // Constructor
@@ -30,9 +28,7 @@ namespace PageObjectModel.Components.Home
         {
             try
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@class='logo img-responsive']")));
-
-                return AutomationPracticeLogoImg.Displayed;
+                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@class='logo img-responsive']"))).Displayed;
             }
             catch (Exception ex)
             {
