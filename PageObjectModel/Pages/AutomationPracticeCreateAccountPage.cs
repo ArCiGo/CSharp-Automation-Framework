@@ -31,7 +31,7 @@ namespace PageObjectModel.Pages
             return createAccountBodyComponent.IsLoaded();
         }
 
-        public void FillRegisterForm(List<Person> personalData)
+        public void FillRegisterForm(List<PersonModel> personalData)
         {
             createAccountBodyComponent.FillRegisterForm(personalData);
         }

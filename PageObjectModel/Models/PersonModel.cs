@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PageObjectModel.Models
 {
-    public class Person
+    public class PersonModel
     {
         public Title Title { get; set; }
 
@@ -36,7 +36,7 @@ namespace PageObjectModel.Models
 
         public string State { get; set; }
 
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
 
         public string Country { get; set; }
 

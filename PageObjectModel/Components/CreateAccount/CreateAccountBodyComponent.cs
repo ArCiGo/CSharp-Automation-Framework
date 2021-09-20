@@ -100,7 +100,7 @@ namespace PageObjectModel.Components.CreateAccount
             }
         }
 
-        public void FillRegisterForm(List<Person> personalData)
+        public void FillRegisterForm(List<PersonModel> personalData)
         {
             SelectTitle(personalData[0].Title);
 
