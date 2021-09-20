@@ -8,33 +8,42 @@ namespace Tests.Data
 {
     public class Mocks
     {
-        private static readonly Faker aux = new Faker("en_US");
+        private static readonly Faker dataFaker = new Faker("en_US");
 
         public static List<PersonModel> personalData = new List<PersonModel>()
         {
             new PersonModel()
             {
                 Title = Title.Mr,
-                FirstName = aux.Name.FirstName(),
-                LastName= aux.Name.LastName(),
-                Email = aux.Internet.Email(),
-                Password = aux.Internet.Password(),
+                FirstName = dataFaker.Name.FirstName(),
+                LastName= dataFaker.Name.LastName(),
+                Email = dataFaker.Internet.Email(),
+                Password = dataFaker.Internet.Password(),
                 Day = "25",
                 Month = "July",
                 Year = "1992",
-                FirstNameAddress = aux.Name.FirstName(),
-                LastNameAddress = aux.Name.LastName(),
-                Company = aux.Company.CompanyName(),
-                Address = aux.Address.FullAddress(),
-                AddressLine2 = aux.Address.SecondaryAddress(),
-                City = aux.Address.City(),
-                State = aux.Address.State(),
+                FirstNameAddress = dataFaker.Name.FirstName(),
+                LastNameAddress = dataFaker.Name.LastName(),
+                Company = dataFaker.Company.CompanyName(),
+                Address = dataFaker.Address.FullAddress(),
+                AddressLine2 = dataFaker.Address.SecondaryAddress(),
+                City = dataFaker.Address.City(),
+                State = dataFaker.Address.State(),
                 ZipCode = "11111",
-                Country = aux.Address.Country(),
-                AdditionalInformation = aux.Lorem.Paragraph(),
-                HomePhone = aux.Phone.PhoneNumberFormat(),
-                MobilePhone = aux.Phone.PhoneNumberFormat(),
-                AddressAlias = aux.Hacker.Adjective()            }
+                Country = dataFaker.Address.Country(),
+                AdditionalInformation = dataFaker.Lorem.Sentence(),
+                HomePhone = dataFaker.Phone.PhoneNumberFormat(),
+                MobilePhone = dataFaker.Phone.PhoneNumberFormat(),
+                AddressAlias = dataFaker.Hacker.Adjective()            }
+        };
+
+        public static List<PersonModel> invalidPersonalData = new List<PersonModel>
+        {
+            new PersonModel()
+            {
+                Email = dataFaker.Internet.Email(),
+                Password = dataFaker.Internet.Password()
+            }
         };
     }
 }

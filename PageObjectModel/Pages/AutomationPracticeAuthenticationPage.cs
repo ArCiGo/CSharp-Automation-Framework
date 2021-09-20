@@ -49,5 +49,10 @@ namespace PageObjectModel.Pages
         {
             return authenticationBodyComponent.ClickOnSignInButton();
         }
+
+        public string IsErrorBannerDisplayed()
+        {
+            return authenticationBodyComponent.IsErrorBannerDisplayed();
+        }
     }
 }

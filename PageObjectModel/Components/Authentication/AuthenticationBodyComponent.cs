@@ -21,6 +21,7 @@ namespace PageObjectModel.Components.Authentication
         public IWebElement EmailAddressAlreadyInput => Driver.FindElement(By.XPath("//h3[contains(text(), 'Already')]/following-sibling::div/div[@class='form-group']/input[@id='email']"));
         public IWebElement PasswordAlreadyInput => Driver.FindElement(By.XPath("//h3[contains(text(), 'Already')]/following-sibling::div/div[@class='form-group'][2]/span/input[@id='passwd']"));
         public IWebElement SignInButton => Driver.FindElement(By.Id("SubmitLogin"));
+        public IWebElement ErrorBanner => Driver.FindElement(By.XPath("//h1/following-sibling::div[@class='alert alert-danger']/descendant::li"));
 
         // Constructor
         public AuthenticationBodyComponent(IWebDriver driver) : base(driver)
@@ -73,6 +74,16 @@ namespace PageObjectModel.Components.Authentication
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("SubmitLogin"))).Click();
 
             return new AutomationPracticeMyAccountPage(Driver);
+        }
+
+        public string IsErrorBannerDisplayed()
+        {
+            if(wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1/following-sibling::div[@class='alert alert-danger']/descendant::li"))).Displayed)
+            {
+                return ErrorBanner.Text;
+            }
+
+            return null;
         }
     }
 }

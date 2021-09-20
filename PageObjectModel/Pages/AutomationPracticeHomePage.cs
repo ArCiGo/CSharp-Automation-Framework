@@ -31,7 +31,7 @@ namespace PageObjectModel.Pages
             logger.Info("URL: " + url + "openned");
         }
 
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
             return homeHeaderComponent.IsLoaded();
         }
@@ -39,6 +39,11 @@ namespace PageObjectModel.Pages
         public AutomationPracticeAuthenticationPage ClickOnSignInButton()
         {
             return homeHeaderComponent.ClickOnSignInButton();
+        }
+
+        public AutomationPracticeAuthenticationPage ClickOnSignOutButton()
+        {
+            return homeHeaderComponent.ClickOnSignOutButton();
         }
     }
 }

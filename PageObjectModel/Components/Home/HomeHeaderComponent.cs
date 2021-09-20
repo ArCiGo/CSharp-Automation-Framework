@@ -16,6 +16,7 @@ namespace PageObjectModel.Components.Home
 
         // Elements        
         public IWebElement SignInButton => Driver.FindElement(By.XPath("//a[@class='login']"));
+        public IWebElement SignOutButton => Driver.FindElement(By.ClassName("logout"));
 
         // Constructor
         public HomeHeaderComponent(IWebDriver driver) : base(driver)
@@ -24,7 +25,7 @@ namespace PageObjectModel.Components.Home
         }
 
         // Actions
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
             try
             {
@@ -44,6 +45,13 @@ namespace PageObjectModel.Components.Home
         public AutomationPracticeAuthenticationPage ClickOnSignInButton()
         {
             SignInButton.Click();
+
+            return new AutomationPracticeAuthenticationPage(Driver);
+        }
+
+        public AutomationPracticeAuthenticationPage ClickOnSignOutButton()
+        {
+            SignOutButton.Click();
 
             return new AutomationPracticeAuthenticationPage(Driver);
         }

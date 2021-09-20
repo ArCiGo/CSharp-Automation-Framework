@@ -12,42 +12,108 @@ namespace Tests.Tests
 {
     [AllureNUnit]
     [TestFixture]
-    [Category("Automation Practice Sample Tests")]
+    [Category("UI Automation Practice Sample Tests")]
     public class AutomationPracticeTests : BaseTest
     {
         // Attributes
         private readonly string baseURL = "http://automationpractice.com/index.php";
-        
+        private AutomationPracticeHomePage apHomePage;
+        private AutomationPracticeAuthenticationPage apAuthenticationPage;
+        private AutomationPracticeCreateAccountPage apCreateAccountPage;
+        private AutomationPracticeMyAccountPage apMyAccountPage;
+
         // Properties
         public string EmailAddress { get; set; }
         public string Password { get; set; }
 
+        // Tests
         [Test(Description = "It creates a new user in the store")]
-        [AllureTag()]
+        [Order(1)]
+        [AllureTag("create", "valid")]
         [AllureSuite("Automation Practice Tests")]
-        public void CreateNewUser_Test()
+        public void CreateNewUserWithValidData()
         {
-            AutomationPracticeHomePage automationPracticeHomePage = new AutomationPracticeHomePage(Driver);
-            automationPracticeHomePage.GoTo(baseURL);
-            Assert.IsTrue(automationPracticeHomePage.IsLoaded());
-            automationPracticeHomePage.ClickOnSignInButton();
-
-            AutomationPracticeAuthenticationPage automationPracticeAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
-            Assert.IsTrue(automationPracticeAuthenticationPage.IsLoaded());
-            automationPracticeAuthenticationPage.FillCreateAccount("samuel@test.com");
-            automationPracticeAuthenticationPage.ClickOnCreateAccountButton();
-
-            AutomationPracticeCreateAccountPage automationPracticeCreateAccountPage = new AutomationPracticeCreateAccountPage(Driver);
-            Assert.IsTrue(automationPracticeCreateAccountPage.IsLoaded());
-            automationPracticeCreateAccountPage.FillRegisterForm(Mocks.personalData);
-            automationPracticeCreateAccountPage.ClickOnRegisterButton();
-
-            AutomationPracticeMyAccountPage automationPracticeMyAccountPage = new AutomationPracticeMyAccountPage(Driver);
-            Assert.IsTrue(automationPracticeMyAccountPage.IsLoaded());
-
-            // Assigning the values to these properties to use them in following tests
+            // Storage of email address and password to use them in the following tests
             EmailAddress = Mocks.personalData[0].Email;
             Password = Mocks.personalData[0].Password;
+
+            apHomePage = new AutomationPracticeHomePage(Driver);
+            apHomePage.GoTo(baseURL);
+            Assert.IsTrue(apHomePage.IsLoaded());
+            apHomePage.ClickOnSignInButton();
+
+            apAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
+            Assert.IsTrue(apAuthenticationPage.IsLoaded());
+            apAuthenticationPage.FillCreateAccount(EmailAddress);
+            apAuthenticationPage.ClickOnCreateAccountButton();
+
+            apCreateAccountPage = new AutomationPracticeCreateAccountPage(Driver);
+            Assert.IsTrue(apCreateAccountPage.IsLoaded());
+            apCreateAccountPage.FillRegisterForm(Mocks.personalData);
+            apCreateAccountPage.ClickOnRegisterButton();
+
+            apMyAccountPage = new AutomationPracticeMyAccountPage(Driver);
+            Assert.IsTrue(apMyAccountPage.IsLoaded());
+        }
+
+        [Test(Description =("It logins successfully in the store with a valid user"))]
+        [Order(2)]
+        [AllureTag("login", "valid")]
+        [AllureSuite("Automation Practice Tests")]
+        public void LoginWithAValidUser()
+        {
+            apHomePage = new AutomationPracticeHomePage(Driver);
+            apHomePage.GoTo(baseURL);
+            Assert.IsTrue(apHomePage.IsLoaded());
+            apHomePage.ClickOnSignInButton();
+
+            apAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
+            Assert.IsTrue(apAuthenticationPage.IsLoaded());
+            apAuthenticationPage.FillSignInForm(EmailAddress, Password);
+            apAuthenticationPage.ClickOnSignInButton();
+
+            apMyAccountPage = new AutomationPracticeMyAccountPage(Driver);
+            Assert.IsTrue(apMyAccountPage.IsLoaded());
+        }
+
+        [Test(Description = ("It throws an error when the user attempts to login with an invalid user"))]
+        [Order(3)]
+        [AllureTag("login", "invalid")]
+        [AllureSuite("Automation Practice Tests")]
+        public void LoginWithAnInvalidUser()
+        {
+            apHomePage = new AutomationPracticeHomePage(Driver);
+            apHomePage.GoTo(baseURL);
+            Assert.IsTrue(apHomePage.IsLoaded());
+            apHomePage.ClickOnSignInButton();
+
+            apAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
+            Assert.IsTrue(apAuthenticationPage.IsLoaded());
+            apAuthenticationPage.FillSignInForm(Mocks.invalidPersonalData[0].Email, Mocks.invalidPersonalData[0].Password);
+            apAuthenticationPage.ClickOnSignInButton();
+            Assert.AreEqual(apAuthenticationPage.IsErrorBannerDisplayed(), "Authentication failed.");
+        }
+
+        [Test(Description = ("It logouts successfully "))]
+        [Order(4)]
+        [AllureTag("logout", "valid")]
+        [AllureSuite("Automation Practice Tests")]
+        public void LogoutWithAValidUser()
+        {
+            apHomePage = new AutomationPracticeHomePage(Driver);
+            apHomePage.GoTo(baseURL);
+            Assert.IsTrue(apHomePage.IsLoaded());
+            apHomePage.ClickOnSignInButton();
+
+            apAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
+            Assert.IsTrue(apAuthenticationPage.IsLoaded());
+            apAuthenticationPage.FillSignInForm(EmailAddress, Password);
+            apAuthenticationPage.ClickOnSignInButton();
+
+            apMyAccountPage = new AutomationPracticeMyAccountPage(Driver);
+            Assert.IsTrue(apMyAccountPage.IsLoaded());
+            apHomePage.ClickOnSignOutButton();
+            Assert.IsTrue(apAuthenticationPage.IsLoaded());
         }
     }
 }
