@@ -13,6 +13,7 @@ namespace PageObjectModel.Pages
         // Attributes
         private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly HomeHeaderComponent homeHeaderComponent;
+        private readonly HomeBodyComponent homeBodyComponent;
         private readonly WebDriverWait wait;
 
         // Elements
@@ -22,6 +23,7 @@ namespace PageObjectModel.Pages
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             homeHeaderComponent = new HomeHeaderComponent(driver);
+            homeBodyComponent = new HomeBodyComponent(driver);
         }
 
         // Actions
@@ -44,6 +46,21 @@ namespace PageObjectModel.Pages
         public AutomationPracticeAuthenticationPage ClickOnSignOutButton()
         {
             return homeHeaderComponent.ClickOnSignOutButton();
+        }
+
+        public AutomationPracticeHomePage ClickOnImageButton()
+        {
+            return homeHeaderComponent.ClickOnImageButton();
+        }
+
+        public AutomationPracticeShoppingCartSummaryPage ClickOnCartLinkButton()
+        {
+            return homeHeaderComponent.ClickOnCartLinkButton();
+        }
+
+        public void AddItemsToCart(List<string> clothes)
+        {
+            homeBodyComponent.AddItemsToCart(clothes);
         }
     }
 }

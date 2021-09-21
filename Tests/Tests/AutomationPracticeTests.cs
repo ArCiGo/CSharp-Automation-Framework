@@ -94,7 +94,7 @@ namespace Tests.Tests
             Assert.AreEqual(apAuthenticationPage.IsErrorBannerDisplayed(), "Authentication failed.");
         }
 
-        [Test(Description = ("It logouts successfully "))]
+        [Test(Description = ("It logouts successfully"))]
         [Order(4)]
         [AllureTag("logout", "valid")]
         [AllureSuite("Automation Practice Tests")]
@@ -114,6 +114,31 @@ namespace Tests.Tests
             Assert.IsTrue(apMyAccountPage.IsLoaded());
             apHomePage.ClickOnSignOutButton();
             Assert.IsTrue(apAuthenticationPage.IsLoaded());
+        }
+
+        [Test(Description = ("It adds multiple items to the shopping cart"))]
+        [Order(5)]
+        [AllureTag("cart")]
+        [AllureSuite("Automation Practice Tests")]
+        public void AddingMultipleItemsToCart()
+        {
+            apHomePage = new AutomationPracticeHomePage(Driver);
+            apHomePage.GoTo(baseURL);
+            Assert.IsTrue(apHomePage.IsLoaded());
+            apHomePage.ClickOnSignInButton();
+
+            apAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
+            Assert.IsTrue(apAuthenticationPage.IsLoaded());
+            apAuthenticationPage.FillSignInForm(EmailAddress, Password);
+            apAuthenticationPage.ClickOnSignInButton();
+
+            apMyAccountPage = new AutomationPracticeMyAccountPage(Driver);
+            Assert.IsTrue(apMyAccountPage.IsLoaded());
+            apHomePage.ClickOnImageButton();
+
+            List<string> clothes = new List<string> { "Faded Short Sleeve T-shirts", "Printed Dress" };
+
+
         }
     }
 }

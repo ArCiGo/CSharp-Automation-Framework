@@ -17,6 +17,8 @@ namespace PageObjectModel.Components.Home
         // Elements        
         public IWebElement SignInButton => Driver.FindElement(By.XPath("//a[@class='login']"));
         public IWebElement SignOutButton => Driver.FindElement(By.ClassName("logout"));
+        public IWebElement LogoImg => Driver.FindElement(By.XPath("//img[@class='logo img-responsive']"));
+        public IWebElement CartLinkButton => Driver.FindElement(By.XPath("//a[contains(@title, 'View my shopping')]"));
 
         // Constructor
         public HomeHeaderComponent(IWebDriver driver) : base(driver)
@@ -54,6 +56,20 @@ namespace PageObjectModel.Components.Home
             SignOutButton.Click();
 
             return new AutomationPracticeAuthenticationPage(Driver);
+        }
+
+        public AutomationPracticeHomePage ClickOnImageButton()
+        {
+            LogoImg.Click();
+
+            return new AutomationPracticeHomePage(Driver);
+        }
+
+        public AutomationPracticeShoppingCartSummaryPage ClickOnCartLinkButton()
+        {
+            CartLinkButton.Click();
+
+            return new AutomationPracticeShoppingCartSummaryPage(Driver);
         }
     }
 }
