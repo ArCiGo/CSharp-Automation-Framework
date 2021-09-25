@@ -21,6 +21,12 @@ namespace Tests.Tests
         private AutomationPracticeAuthenticationPage apAuthenticationPage;
         private AutomationPracticeCreateAccountPage apCreateAccountPage;
         private AutomationPracticeMyAccountPage apMyAccountPage;
+        private AutomationPracticeShoppingCartSummaryPage apShoppingCartSummaryPage;
+        private AutomationPracticeShoppingCartAddressesPage apShoppingCartAddressPage;
+        private AutomationPracticeShoppingCartShippingPage apShoppingCartShippingPage;
+        private AutomationPracticeShoppingCartPaymentMethodPage apShoppingCartPaymentMethodPage;
+        private AutomationPracticeShoppingCartOrderSummaryBankwirePage apShoppingCartOrderSummaryBWP;
+        private AutomationPracticeShoppingCartOrderConfirmationPage apShoppingCartOrderConfirmationPage;
 
         // Properties
         public string EmailAddress { get; set; }
@@ -122,23 +128,44 @@ namespace Tests.Tests
         [AllureSuite("Automation Practice Tests")]
         public void AddingMultipleItemsToCart()
         {
+            List<string> clothes = new List<string> { "Faded Short Sleeve T-shirts", "Printed Chiffon Dress" };
+
             apHomePage = new AutomationPracticeHomePage(Driver);
             apHomePage.GoTo(baseURL);
             Assert.IsTrue(apHomePage.IsLoaded());
-            apHomePage.ClickOnSignInButton();
+            apHomePage.AddItemsToCart(clothes);
+            apHomePage.ClickOnCartLinkButton();
+
+            apShoppingCartSummaryPage = new AutomationPracticeShoppingCartSummaryPage(Driver);
+            Assert.True(apShoppingCartSummaryPage.IsLoaded());
+            Assert.IsTrue(apShoppingCartSummaryPage.IsOnShoppingCart(clothes));
+            apShoppingCartSummaryPage.ClickOnCheckoutButton();
 
             apAuthenticationPage = new AutomationPracticeAuthenticationPage(Driver);
-            Assert.IsTrue(apAuthenticationPage.IsLoaded());
-            apAuthenticationPage.FillSignInForm(EmailAddress, Password);
+            Assert.True(apAuthenticationPage.IsLoaded());
+            apAuthenticationPage.FillSignInForm("eduardo.gonzalez@wolterskluwer.com", "Pa$$w0rd!");
             apAuthenticationPage.ClickOnSignInButton();
 
-            apMyAccountPage = new AutomationPracticeMyAccountPage(Driver);
-            Assert.IsTrue(apMyAccountPage.IsLoaded());
-            apHomePage.ClickOnImageButton();
+            apShoppingCartAddressPage = new AutomationPracticeShoppingCartAddressesPage(Driver);
+            Assert.True(apShoppingCartAddressPage.IsLoaded());
+            apShoppingCartAddressPage.ClickOnCheckOutButton();
 
-            List<string> clothes = new List<string> { "Faded Short Sleeve T-shirts", "Printed Dress" };
+            apShoppingCartShippingPage = new AutomationPracticeShoppingCartShippingPage(Driver);
+            Assert.True(apShoppingCartShippingPage.IsLoaded());
+            apShoppingCartShippingPage.CheckTermsOfServiceCheckbox();
+            apShoppingCartShippingPage.ClickOnCheckoutButton();
 
+            apShoppingCartPaymentMethodPage = new AutomationPracticeShoppingCartPaymentMethodPage(Driver);
+            Assert.True(apShoppingCartPaymentMethodPage.IsLoaded());
+            apShoppingCartPaymentMethodPage.ClickOnBankwireButton();
 
+            apShoppingCartOrderSummaryBWP = new AutomationPracticeShoppingCartOrderSummaryBankwirePage(Driver);
+            Assert.True(apShoppingCartOrderSummaryBWP.IsLoaded());
+            apShoppingCartOrderSummaryBWP.ClickOnConfirmOrderButton();
+
+            apShoppingCartOrderConfirmationPage = new AutomationPracticeShoppingCartOrderConfirmationPage(Driver);
+            Assert.True(apShoppingCartOrderConfirmationPage.IsLoaded());
+            Assert.AreEqual("Your order on My Store is complete.", apShoppingCartOrderConfirmationPage.GetOrderConfirmationText());
         }
     }
 }

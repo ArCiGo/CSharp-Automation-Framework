@@ -16,8 +16,8 @@ namespace PageObjectModel.Components.ShoppingCartSummary
 
         // Elements
         public IWebElement TitleLabel => Driver.FindElement(By.Id("cart_title"));
-        public IList<IWebElement> ProductNameLabel => Driver.FindElements(By.ClassName("product-name"));
-        public IWebElement CheckoutButton => Driver.FindElement(By.XPath("//a[contains(@title, 'Proceed to checkout')][@rel='nofollow']"));
+        public IList<IWebElement> ProductNameLabel => Driver.FindElements(By.CssSelector("td p.product-name a"));
+        public IWebElement CheckoutButton => Driver.FindElement(By.CssSelector("p[class='cart_navigation clearfix'] a[title^='Proceed']"));
 
         // Constructor
         public ShoppingCartSummaryBodyComponent(IWebDriver driver) : base(driver)
@@ -49,7 +49,7 @@ namespace PageObjectModel.Components.ShoppingCartSummary
             {
                 for(int j = 0; j < ProductNameLabel.Count; j++)
                 {
-                    if (clothes[i].Equals(ProductNameLabel[j]))
+                    if (clothes[i].Equals(ProductNameLabel[j].Text))
                     {
                         return true;
                     }

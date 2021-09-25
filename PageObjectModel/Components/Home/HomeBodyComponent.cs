@@ -18,33 +18,30 @@ namespace PageObjectModel.Components.Home
 
         // Elements
         //public IList<IWebElement> ClothesText => Driver.FindElements(By.XPath("//a[@class='product-name']"));
-        public IList<IWebElement> ClothesImage => Driver.FindElements(By.XPath("//img[@class='replace-2x img-responsive']"));
+        public IList<IWebElement> ClotheImages => Driver.FindElements(By.XPath("//ul[@id='homefeatured']/li/descendant::img[@class='replace-2x img-responsive']"));
+        public IList<IWebElement> CartButtons => Driver.FindElements(By.XPath("//ul[@id='homefeatured']/li/descendant::div[@class='button-container']/a[@title='Add to cart']"));
         public IWebElement ContinueShoppingButton => Driver.FindElement(By.XPath("//div[@class='button-container']/span"));
 
         // Constructor
         public HomeBodyComponent(IWebDriver driver) : base(driver) 
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             homeHeaderComponent = new HomeHeaderComponent(Driver);
         }
 
         // Actions
         public void AddItemsToCart(List<string> clothes)
         {
-            for(int i = 0; i < clothes.Count; i ++)
+            for (int i = 0; i < clothes.Count; i ++)
             {
-                for(int j = 0; j < ClothesImage.Count; j++)
+                for (int j = 0; j < ClotheImages.Count; j++)
                 {
                     Actions action = new Actions(Driver);
-                    action.MoveToElement(ClothesImage[j]).Build().Perform();
-                    
-                    Console.WriteLine("Item by index: " + ClothesImage[j].GetAttribute("alt"));
+                    action.MoveToElement(ClotheImages[j]).Build().Perform();
 
-                    IWebElement cartButton = Driver.FindElement(By.XPath("//div[@class='button-container']/a[@title='Add to cart']"));
-
-                    if (cartButton.Displayed && (clothes[i].ToString().Equals(ClothesImage[j].GetAttribute("alt"))))
+                    if (CartButtons[j].Displayed && (clothes[i].Equals(ClotheImages[j].GetAttribute("alt"))))
                     {
-                        cartButton.Click();
+                        CartButtons[j].Click();
                         wait.Until(ExpectedConditions.ElementIsVisible(By.Id("layer_cart")));
                         ContinueShoppingButton.Click();
                         homeHeaderComponent.IsLoaded();

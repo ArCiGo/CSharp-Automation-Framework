@@ -8,7 +8,7 @@ using System.Text;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeShoppingCartOrderOrderSummaryBankwirePage : BasePage
+    public class AutomationPracticeShoppingCartOrderSummaryBankwirePage : BasePage
     {
         // Attributes
         private readonly Logger logger = LogManager.GetCurrentClassLogger();
@@ -18,7 +18,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeShoppingCartOrderOrderSummaryBankwirePage(IWebDriver driver) : base(driver)
+        public AutomationPracticeShoppingCartOrderSummaryBankwirePage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartBankwireBodyComponent = new ShoppingCartOrderSummaryBankwireBodyComponent(Driver);
@@ -30,7 +30,7 @@ namespace PageObjectModel.Pages
             return shoppingCartBankwireBodyComponent.IsLoaded();
         }
 
-        public AutomationPracticeShoppingCartOrderOrderSummaryBankwirePage ClickOnConfirmOrderButton()
+        public AutomationPracticeShoppingCartOrderSummaryBankwirePage ClickOnConfirmOrderButton()
         {
             return shoppingCartBankwireBodyComponent.ClickOnConfirmOrderButton();
         }
