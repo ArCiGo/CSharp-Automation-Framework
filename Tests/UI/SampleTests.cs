@@ -3,11 +3,8 @@ using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using PageObjectModel.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Tests.Tests
+namespace Tests.UI
 {
     [AllureNUnit]
     [TestFixture]

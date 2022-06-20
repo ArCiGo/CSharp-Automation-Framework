@@ -1,9 +1,7 @@
 ﻿using CsvHelper.Configuration.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Tests.Models
+namespace Tests.APIAndData.Models
 {
     public class MockarooFakeModel
     {

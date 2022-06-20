@@ -1,9 +1,6 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Tests.Client
+namespace Tests.APIAndData.Client
 {
     public class PokeAPIClient
     {

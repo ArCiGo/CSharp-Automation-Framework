@@ -7,9 +7,9 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using Tests.AutomationResources;
+using Tests.UI.AutomationResources;
 
-namespace Tests
+namespace Tests.UI
 {
     [AllureNUnit]
     [AllureParentSuite("Tests")]

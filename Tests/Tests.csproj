@@ -26,16 +26,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="API\" />
+    <None Remove="UI\" />
+    <None Remove="UI\AutomationResources\" />
+    <None Remove="API\Client\" />
+    <None Remove="API\Data\" />
+    <None Remove="API\Models\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="allureConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="APIAndData\Data\Data_1.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="APIAndData\" />
+    <Folder Include="UI\" />
+    <Folder Include="UI\AutomationResources\" />
+    <Folder Include="APIAndData\Client\" />
+    <Folder Include="APIAndData\Data\" />
+    <Folder Include="APIAndData\Models\" />
   </ItemGroup>
 
 </Project>
