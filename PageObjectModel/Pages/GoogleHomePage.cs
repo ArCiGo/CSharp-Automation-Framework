@@ -3,8 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Components.Home;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Pages
 {
@@ -39,23 +37,9 @@ namespace PageObjectModel.Pages
         /*
          * This is a generic validation
          */
-        public Boolean IsLoaded()
+        public bool IsLoaded()
         {
-            try
-            {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@alt='Google']")));
-
-                return GoogleLogoImg.Displayed;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.Source);
-                logger.Error(ex.StackTrace);
-                logger.Error(ex.InnerException);
-                logger.Error(ex.Message);
-
-                return false;
-            }
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@alt='Google']"))).Displayed;
         }
 
         public GoogleResultsPage FillSearchForm(string search)

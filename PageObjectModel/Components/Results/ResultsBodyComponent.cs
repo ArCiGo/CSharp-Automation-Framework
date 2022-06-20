@@ -2,8 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Components.Results
 {
@@ -27,23 +25,9 @@ namespace PageObjectModel.Components.Results
 
         // Actions
 
-        public Boolean ResultsLabelIsLoaded()
+        public bool ResultsLabelIsLoaded()
         {
-            try
-            {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='result-stats']")));
-
-                return ResultsLabel.Displayed;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.Source);
-                logger.Error(ex.StackTrace);
-                logger.Error(ex.InnerException);
-                logger.Error(ex.Message);
-
-                return false;
-            }
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='result-stats']"))).Displayed;
         }
     }
 }

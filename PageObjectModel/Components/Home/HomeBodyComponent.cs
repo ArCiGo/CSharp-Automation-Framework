@@ -1,8 +1,5 @@
 ﻿using OpenQA.Selenium;
 using PageObjectModel.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Components.Home
 {
