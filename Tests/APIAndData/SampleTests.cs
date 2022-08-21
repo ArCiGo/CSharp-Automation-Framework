@@ -39,7 +39,7 @@ namespace Tests.APIAndData
         public void GetCSV()
         {
             DateTime date = new DateTime(2021, 07, 10);
-            string filePath = @"/Users/arcigo/Documents/Projects/CSharp-Automation-Framework/Tests/APIAndData/Data/Data_1.csv";
+            string filePath = @"your/Awesome/Path/Data_1.csv";
             CsvReader csvReader = Utils.CSVReaderFile(filePath);
 
             var records = csvReader.GetRecords<MockarooFakeModel>().ToList();
