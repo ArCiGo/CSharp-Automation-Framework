@@ -1,5 +1,4 @@
-﻿
-using AventStack.ExtentReports;
+﻿using AventStack.ExtentReports;
 using NUnit.Framework.Interfaces;
 
 namespace Tests.Utilities

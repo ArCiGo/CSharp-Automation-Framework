@@ -701,5 +701,6 @@ obj/
 
 ### Other files and folders excluded ###
 UIReports/
+APIReports/
 **/.DS_Store
 *.txt

@@ -36,7 +36,7 @@ namespace Tests.UI
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
-                .WriteTo.File(projectPath + "/logs-.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File(projectPath + "/UIlogs-.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
         }
 
@@ -108,14 +108,14 @@ namespace Tests.UI
             else if (outcome == ResultState.Failure)
             {
                 test.Fail(message);
-                Log.Error(message);
+                Log.Error("Fail: " + message);
                 mediaEntity = CaptureScreenShot(Driver, fileName);
                 test.Fail("ExtentReport 4 Capture: Test Failed (click on button)", mediaEntity);
             }
             else if (outcome == ResultState.Error)
             {
                 test.Error(message);
-                Log.Error(message);
+                Log.Error("Error: " + message);
                 mediaEntity = CaptureScreenShot(Driver, fileName);
                 test.Fail("ExtentReport 4 Capture: There was an error executing the test (click on button)", mediaEntity);
             }

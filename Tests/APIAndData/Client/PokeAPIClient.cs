@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace Tests.APIAndData.Client
+namespace Tests.APIAndData
 {
     public class PokeAPIClient
     {

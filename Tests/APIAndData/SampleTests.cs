@@ -5,7 +5,7 @@ using RestSharp.Serialization.Json;
 using System;
 using System.Linq;
 using System.Net;
-using Tests.APIAndData.Client;
+using Tests.APIAndData;
 using Tests.APIAndData.Models;
 using Tests.Utilities;
 
@@ -15,9 +15,9 @@ namespace Tests.APIAndData
      * These tests read data from different resources: JSON (from a fake API) and CSV
      */
     [TestFixture]
-    class SampleTests
+    public class SampleTests : BaseAPITest
     {
-        private PokeAPIClient pokeAPIClient = new PokeAPIClient();
+        // private readonly PokeAPIClient pokeAPIClient = new PokeAPIClient();
         private JsonDeserializer deserializer = new JsonDeserializer();
 
         [Test(Description = "Gets the data of the Pokemon requested based on its ID")]
@@ -39,7 +39,7 @@ namespace Tests.APIAndData
         public void GetCSV()
         {
             DateTime date = new DateTime(2021, 07, 10);
-            string filePath = @"your/Awesome/Path/Data_1.csv";
+            string filePath = @"/Users/arcigo/Documents/Projects/CSharp-Automation-Framework/Tests/APIAndData/Data/Data_1.csv";
             CsvReader csvReader = Utils.CSVReaderFile(filePath);
 
             var records = csvReader.GetRecords<MockarooFakeModel>().ToList();
