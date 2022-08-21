@@ -1,9 +1,0 @@
-{
-  "allure": {
-    "directory": "C:\\allure-results",
-    "links": [],
-    "brokenTestData": [
-      "System.Exception"
-    ]
-  }
-}

@@ -1,6 +1,6 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Serilog;
 using System;
 
 namespace PageObjectModel.Components.Results
@@ -8,12 +8,9 @@ namespace PageObjectModel.Components.Results
     public class ResultsBodyComponent : GoogleComponent
     {
         // Attributes
-
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
 
         // Elements
-
         public IWebElement ResultsLabel => Driver.FindElement(By.XPath("//div[@id='result-stats']"));
 
         // Constructor
@@ -27,6 +24,8 @@ namespace PageObjectModel.Components.Results
 
         public bool ResultsLabelIsLoaded()
         {
+            Log.Information("ResultsBodyComponent class: ResultsLabelIsLoaded() method was ran");
+
             return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='result-stats']"))).Displayed;
         }
     }
