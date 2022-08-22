@@ -7,7 +7,6 @@ using Serilog;
 namespace Tests.UI
 {
     [TestFixture]
-    [Category("UI Sample Tests")]
     public class SampleTests : BaseTest
     {
         [Test(Description = "This is a sample test"), Category("UI")]
@@ -24,7 +23,7 @@ namespace Tests.UI
             Assert.IsTrue(resultsText.Displayed);
         }
 
-        [Test(Description = "This is a sample test using POM and components")]
+        [Test(Description = "This is a sample test using POM and components"), Category("UI")]
         [Order(2)]
         public void Test2()
         {
@@ -36,7 +35,7 @@ namespace Tests.UI
             Assert.IsTrue(googleResultsPage.ResultsLabelIsLoaded());
         }
 
-        [Test(Description = "This sample test should fail for the screenshot")]
+        [Test(Description = "This sample test should fail for the screenshot"), Category("UI")]
         [Order(3)]
         public void Test3()
         {

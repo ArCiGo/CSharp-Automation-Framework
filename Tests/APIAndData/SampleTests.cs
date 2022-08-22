@@ -17,11 +17,10 @@ namespace Tests.APIAndData
     [TestFixture]
     public class SampleTests : BaseAPITest
     {
-        // private readonly PokeAPIClient pokeAPIClient = new PokeAPIClient();
         private JsonDeserializer deserializer = new JsonDeserializer();
 
-        [Test(Description = "Gets the data of the Pokemon requested based on its ID")]
-        [Category("JSON Sample Test")]
+        // JSON Sample Test
+        [Test(Description = "Gets the data of the Pokemon requested based on its ID"), Category("API")]
         public void GetPokemon()
         {
             IRestResponse getPokemonResponse = pokeAPIClient.GetPokemon(1);
@@ -34,8 +33,8 @@ namespace Tests.APIAndData
             // Once the data is retrieved, it can be stored into variables and pass it into methods (or tests)
         }
 
-        [Test(Description = "Gets the data stored in a CSV file")]
-        [Category("CSV Sample Test")]
+        // CSV Sample Test
+        [Test(Description = "Gets the data stored in a CSV file"), Category("CSV")]
         public void GetCSV()
         {
             DateTime date = new DateTime(2021, 07, 10);
