@@ -700,5 +700,9 @@ obj/
 # Additional files built by Visual Studio
 
 ### Other files and folders excluded ###
+UIReports/
+APIReports/
+**/.DS_Store
+*.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore,aspnetcore,csharp

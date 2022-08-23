@@ -1,17 +1,14 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Components.Home;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Pages
 {
     public class AutomationPracticeHomePage : BasePage
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly HomeHeaderComponent homeHeaderComponent;
         private readonly HomeBodyComponent homeBodyComponent;
         private readonly WebDriverWait wait;
@@ -30,7 +27,7 @@ namespace PageObjectModel.Pages
         public void GoTo(string url)
         {
             Driver.Navigate().GoToUrl(url);
-            logger.Info("URL: " + url + "openned");
+            // logger.Info("URL: " + url + "openned");
         }
 
         public bool IsLoaded()

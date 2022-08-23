@@ -1,17 +1,13 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Pages;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Components.ShoppingCartPaymentMethod
 {
     public class ShoppingCartPaymentMethodBodyComponent : AutomationPracticeComponent
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
 
         // Elements
@@ -33,10 +29,7 @@ namespace PageObjectModel.Components.ShoppingCartPaymentMethod
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Source);
-                logger.Error(ex.StackTrace);
-                logger.Error(ex.InnerException);
-                logger.Error(ex.Message);
+                // here goes the logger
 
                 return false;
             }

@@ -1,8 +1,6 @@
 ﻿using Bogus;
 using PageObjectModel.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Tests.Data
 {

@@ -10,16 +10,13 @@
     <PackageReference Include="Bogus" Version="33.1.1" />
     <PackageReference Include="CsvHelper" Version="27.1.1" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
-    <PackageReference Include="NLog" Version="4.7.11" />
     <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit.Allure" Version="1.0.14" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-    <PackageReference Include="RestSharp" Version="106.12.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="95.0.4638.1700" />
-    <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="104.0.5112.7900" />
+    <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.31.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,12 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="allureConfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Remove="Data\" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
 </Project>

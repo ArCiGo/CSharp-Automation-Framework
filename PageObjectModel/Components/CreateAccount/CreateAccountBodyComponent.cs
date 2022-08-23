@@ -1,18 +1,15 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Models;
 using PageObjectModel.Pages;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Components.CreateAccount
 {
     public class CreateAccountBodyComponent : AutomationPracticeComponent
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
 
         // Elements
@@ -74,10 +71,7 @@ namespace PageObjectModel.Components.CreateAccount
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Source);
-                logger.Error(ex.StackTrace);
-                logger.Error(ex.InnerException);
-                logger.Error(ex.Message);
+                // Here goes the logger
 
                 return false;
             }
@@ -91,10 +85,7 @@ namespace PageObjectModel.Components.CreateAccount
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Source);
-                logger.Error(ex.StackTrace);
-                logger.Error(ex.InnerException);
-                logger.Error(ex.Message);
+                // Here goes the logger
 
                 return false;
             }
@@ -174,10 +165,7 @@ namespace PageObjectModel.Components.CreateAccount
                     break;
                 default:
                     ArgumentException ex = new ArgumentException("No such option exists!");
-                    logger.Error(ex.Source);
-                    logger.Error(ex.StackTrace);
-                    logger.Error(ex.InnerException);
-                    logger.Error(ex.Message);
+                    // here goes the logger
 
                     throw ex;
             }

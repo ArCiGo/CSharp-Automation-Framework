@@ -1,35 +1,25 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
 
 namespace Tests.AutomationResources
 {
     public class WebDriverFactory
     {
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-
         public IWebDriver GetDriver(BrowserType browserType)
         {
             switch (browserType)
             {
                 case BrowserType.Chrome:
-                    logger.Info("*** Chrome driver created ***");
+                    // logger
                     return GetChromeDriver();
                 case BrowserType.Firefox:
-                    logger.Info("*** Firefox driver created ***");
+                    // logger
                     return GetFirefoxDriver();
                 default:
                     ArgumentException ex = new ArgumentException("No such browser exists!");
-                    logger.Error(ex.Source);
-                    logger.Error(ex.StackTrace);
-                    logger.Error(ex.InnerException);
-                    logger.Error(ex.Message);
+                    // more loggers
                     throw ex;
             }
         }

@@ -1,17 +1,13 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Components.ShoppingCartOrderConfirmation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Pages
 {
     public class AutomationPracticeShoppingCartOrderConfirmationPage : BasePage
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
         private readonly ShoppingCartOrderConfirmationBodyComponent shoppingCartOrderConfirmationBodyComponent;
 

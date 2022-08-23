@@ -1,17 +1,14 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Components.ShoppingCartSummary;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Pages
 {
     public class AutomationPracticeShoppingCartSummaryPage : BasePage
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
         private readonly ShoppingCartSummaryBodyComponent shoppingCartSummaryBodyComponent;
 

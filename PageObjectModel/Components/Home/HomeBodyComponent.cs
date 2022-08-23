@@ -1,18 +1,14 @@
-﻿using NLog;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-using PageObjectModel.Pages;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjectModel.Components.Home
 {
     public class HomeBodyComponent : AutomationPracticeComponent
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly WebDriverWait wait;
         private readonly HomeHeaderComponent homeHeaderComponent;
 

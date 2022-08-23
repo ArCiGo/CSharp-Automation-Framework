@@ -1,7 +1,3 @@
-using Allure.Commons;
-using NLog;
-using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -11,12 +7,9 @@ using Tests.AutomationResources;
 
 namespace Tests
 {
-    [AllureNUnit]
-    [AllureParentSuite("Tests")]
     public class BaseTest
     {
         // Attributes
-        private readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         // Properties
         protected IWebDriver Driver { get; set; }
@@ -26,17 +19,13 @@ namespace Tests
         [OneTimeSetUp]
         public void CleanupResultDirectory()
         {
-            AllureExtensions.WrapSetUpTearDownParams(() => 
-            { 
-                AllureLifecycle.Instance.CleanupResultDirectory(); 
-            },
-            "Cleanup Allure Results Directory");
+            
         }
 
         [SetUp]
         public void Setup()
         {
-            logger.Info("*** Test started ***");
+            // logger
 
             var factory = new WebDriverFactory();
             Driver = factory.GetDriver(BrowserType.Chrome);
@@ -47,9 +36,7 @@ namespace Tests
         [TearDown]
         public void CleanUp()
         {
-            logger.Info(GetType().FullName + " started a CleanUp() method");
-            
-            TakeScreenshot();
+            // logger
 
             try
             {
@@ -57,23 +44,7 @@ namespace Tests
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Source);
-                logger.Error(ex.StackTrace);
-                logger.Error(ex.InnerException);
-                logger.Error(ex.Message);
-            }
-        }
-
-        private void TakeScreenshot()
-        {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
-                var filename = TestContext.CurrentContext.Test.MethodName + "_screenshot_" + DateTime.Now.Ticks + ".png";
-                var path = filename;
-                screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
-                TestContext.AddTestAttachment(path);
-                AllureLifecycle.Instance.AddAttachment(filename, "image/png", path);
+                // more loggers
             }
         }
 
@@ -86,7 +57,7 @@ namespace Tests
             Driver.Quit();
             Driver = null;
 
-            logger.Info("Browser stopped successfully!");
+            // logger
         }
     }
 }
