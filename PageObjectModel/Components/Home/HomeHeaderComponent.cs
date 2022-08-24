@@ -37,32 +37,32 @@ namespace PageObjectModel.Components.Home
             }
         }
 
-        public AutomationPracticeAuthenticationPage ClickOnSignInButton()
+        public APAuthenticationPage ClickOnSignInButton()
         {
             SignInButton.Click();
 
-            return new AutomationPracticeAuthenticationPage(Driver);
+            return new APAuthenticationPage(Driver);
         }
 
-        public AutomationPracticeAuthenticationPage ClickOnSignOutButton()
+        public APAuthenticationPage ClickOnSignOutButton()
         {
             SignOutButton.Click();
 
-            return new AutomationPracticeAuthenticationPage(Driver);
+            return new APAuthenticationPage(Driver);
         }
 
-        public AutomationPracticeHomePage ClickOnImageButton()
+        public APHomePage ClickOnImageButton()
         {
             LogoImg.Click();
 
-            return new AutomationPracticeHomePage(Driver);
+            return new APHomePage(Driver);
         }
 
-        public AutomationPracticeShoppingCartSummaryPage ClickOnCartLinkButton()
+        public APShoppingCartSummaryPage ClickOnCartLinkButton()
         {
             CartLinkButton.Click();
 
-            return new AutomationPracticeShoppingCartSummaryPage(Driver);
+            return new APShoppingCartSummaryPage(Driver);
         }
     }
 }

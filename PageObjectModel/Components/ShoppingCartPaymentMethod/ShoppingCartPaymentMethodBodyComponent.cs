@@ -35,11 +35,11 @@ namespace PageObjectModel.Components.ShoppingCartPaymentMethod
             }
         }
 
-        public AutomationPracticeShoppingCartOrderConfirmationPage ClickOnBankwireButton()
+        public APShoppingCartOrderConfirmationPage ClickOnBankwireButton()
         {
             BankwireButton.Click();
 
-            return new AutomationPracticeShoppingCartOrderConfirmationPage(Driver);
+            return new APShoppingCartOrderConfirmationPage(Driver);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeHomePage : BasePage
+    public class APHomePage : BasePage
     {
         // Attributes
         private readonly HomeHeaderComponent homeHeaderComponent;
@@ -16,7 +16,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeHomePage(IWebDriver driver) : base(driver)
+        public APHomePage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             homeHeaderComponent = new HomeHeaderComponent(driver);
@@ -35,22 +35,22 @@ namespace PageObjectModel.Pages
             return homeHeaderComponent.IsLoaded();
         }
 
-        public AutomationPracticeAuthenticationPage ClickOnSignInButton()
+        public APAuthenticationPage ClickOnSignInButton()
         {
             return homeHeaderComponent.ClickOnSignInButton();
         }
 
-        public AutomationPracticeAuthenticationPage ClickOnSignOutButton()
+        public APAuthenticationPage ClickOnSignOutButton()
         {
             return homeHeaderComponent.ClickOnSignOutButton();
         }
 
-        public AutomationPracticeHomePage ClickOnImageButton()
+        public APHomePage ClickOnImageButton()
         {
             return homeHeaderComponent.ClickOnImageButton();
         }
 
-        public AutomationPracticeShoppingCartSummaryPage ClickOnCartLinkButton()
+        public APShoppingCartSummaryPage ClickOnCartLinkButton()
         {
             return homeHeaderComponent.ClickOnCartLinkButton();
         }

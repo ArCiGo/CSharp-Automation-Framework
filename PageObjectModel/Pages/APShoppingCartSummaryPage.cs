@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeShoppingCartSummaryPage : BasePage
+    public class APShoppingCartSummaryPage : BasePage
     {
         // Attributes
         private readonly WebDriverWait wait;
@@ -15,7 +15,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeShoppingCartSummaryPage(IWebDriver driver) : base(driver)
+        public APShoppingCartSummaryPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartSummaryBodyComponent = new ShoppingCartSummaryBodyComponent(Driver);
@@ -32,7 +32,7 @@ namespace PageObjectModel.Pages
             return shoppingCartSummaryBodyComponent.IsOnShoppingCart(clothes);
         }
 
-        public AutomationPracticeShoppingCartAddressesPage ClickOnCheckoutButton()
+        public APShoppingCartAddressesPage ClickOnCheckoutButton()
         {
             return shoppingCartSummaryBodyComponent.ClickOnCheckoutButton();
         }

@@ -5,7 +5,7 @@ using System;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeAuthenticationPage : BasePage
+    public class APAuthenticationPage : BasePage
     {
         // Attributes
         private readonly AuthenticationBodyComponent authenticationBodyComponent;
@@ -14,7 +14,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeAuthenticationPage(IWebDriver driver) : base(driver)
+        public APAuthenticationPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             authenticationBodyComponent = new AuthenticationBodyComponent(driver);
@@ -31,7 +31,7 @@ namespace PageObjectModel.Pages
             authenticationBodyComponent.FillCreateAccountForm(email);
         }
 
-        public AutomationPracticeCreateAccountPage ClickOnCreateAccountButton()
+        public APCreateAccountPage ClickOnCreateAccountButton()
         {
             return authenticationBodyComponent.ClickOnCreateAccountButton();
         }
@@ -41,7 +41,7 @@ namespace PageObjectModel.Pages
             authenticationBodyComponent.FillSignInForm(email, password);
         }
 
-        public AutomationPracticeMyAccountPage ClickOnSignInButton()
+        public APMyAccountPage ClickOnSignInButton()
         {
             return authenticationBodyComponent.ClickOnSignInButton();
         }

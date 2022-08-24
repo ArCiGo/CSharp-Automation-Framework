@@ -241,11 +241,11 @@ namespace PageObjectModel.Components.CreateAccount
             }
         }
 
-        public AutomationPracticeMyAccountPage ClickRegisterButton()
+        public APMyAccountPage ClickRegisterButton()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("submitAccount"))).Click();
 
-            return new AutomationPracticeMyAccountPage(Driver);
+            return new APMyAccountPage(Driver);
         }
     }
 }

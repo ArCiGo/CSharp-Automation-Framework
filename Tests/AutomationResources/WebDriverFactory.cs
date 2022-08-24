@@ -24,10 +24,6 @@ namespace Tests.AutomationResources
             }
         }
 
-        /*
-         * Review if this works on Mac.
-         * If this works as expected on Mac, the OperatingSystem class will not be necessary.
-         */
         private IWebDriver GetChromeDriver()
         {
             ChromeOptions options = new ChromeOptions();

@@ -41,11 +41,11 @@ namespace PageObjectModel.Components.ShoppingCartShipping
             TermsOfServiceCheckbox.Click();
         }
 
-        public AutomationPracticeShoppingCartPaymentMethodPage ClickOnCheckoutButton()
+        public APShoppingCartPaymentMethodPage ClickOnCheckoutButton()
         {
             CheckoutButton.Click();
 
-            return new AutomationPracticeShoppingCartPaymentMethodPage(Driver);
+            return new APShoppingCartPaymentMethodPage(Driver);
         }
     }
 }

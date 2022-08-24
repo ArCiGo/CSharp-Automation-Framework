@@ -35,11 +35,11 @@ namespace PageObjectModel.Components.ShoppingCartAddresses
             }
         }
 
-        public AutomationPracticeShoppingCartShippingPage ClickOnCheckOutButton()
+        public APShoppingCartShippingPage ClickOnCheckOutButton()
         {
             CheckoutButton.Click();
 
-            return new AutomationPracticeShoppingCartShippingPage(Driver);
+            return new APShoppingCartShippingPage(Driver);
         }
     }
 }

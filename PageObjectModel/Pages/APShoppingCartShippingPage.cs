@@ -5,7 +5,7 @@ using System;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeShoppingCartShippingPage : BasePage
+    public class APShoppingCartShippingPage : BasePage
     {
         // Attributes
         private readonly WebDriverWait wait;
@@ -14,7 +14,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeShoppingCartShippingPage(IWebDriver driver) : base(driver)
+        public APShoppingCartShippingPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartShippingBodyComponent = new ShoppingCartShippingBodyComponent(Driver);
@@ -31,7 +31,7 @@ namespace PageObjectModel.Pages
             shoppingCartShippingBodyComponent.CheckTermsOfServiceCheckbox();
         }
 
-        public AutomationPracticeShoppingCartPaymentMethodPage ClickOnCheckoutButton()
+        public APShoppingCartPaymentMethodPage ClickOnCheckoutButton()
         {
             return shoppingCartShippingBodyComponent.ClickOnCheckoutButton();
         }

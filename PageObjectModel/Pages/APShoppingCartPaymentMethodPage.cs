@@ -5,7 +5,7 @@ using System;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeShoppingCartPaymentMethodPage : BasePage
+    public class APShoppingCartPaymentMethodPage : BasePage
     {
         // Attributes
         private readonly WebDriverWait wait;
@@ -14,7 +14,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeShoppingCartPaymentMethodPage(IWebDriver driver) : base(driver)
+        public APShoppingCartPaymentMethodPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartPaymentBodyComponent = new ShoppingCartPaymentMethodBodyComponent(Driver);
@@ -26,7 +26,7 @@ namespace PageObjectModel.Pages
             return shoppingCartPaymentBodyComponent.IsLoaded();
         }
 
-        public AutomationPracticeShoppingCartOrderConfirmationPage ClickOnBankwireButton()
+        public APShoppingCartOrderConfirmationPage ClickOnBankwireButton()
         {
             return shoppingCartPaymentBodyComponent.ClickOnBankwireButton();
         }

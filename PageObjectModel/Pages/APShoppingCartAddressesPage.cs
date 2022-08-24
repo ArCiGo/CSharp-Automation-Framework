@@ -5,7 +5,7 @@ using System;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeShoppingCartAddressesPage : BasePage
+    public class APShoppingCartAddressesPage : BasePage
     {
         // Attributes
         private readonly WebDriverWait wait;
@@ -14,7 +14,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeShoppingCartAddressesPage(IWebDriver driver) : base(driver)
+        public APShoppingCartAddressesPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartAddressBodyComponent = new ShoppingCartAddressesBodyComponent(Driver);
@@ -26,7 +26,7 @@ namespace PageObjectModel.Pages
             return shoppingCartAddressBodyComponent.IsLoaded();
         }
 
-        public AutomationPracticeShoppingCartShippingPage ClickOnCheckOutButton()
+        public APShoppingCartShippingPage ClickOnCheckOutButton()
         {
             return shoppingCartAddressBodyComponent.ClickOnCheckOutButton();
         }

@@ -46,11 +46,11 @@ namespace PageObjectModel.Components.Authentication
             EmailAddressCreateInput.SendKeys(email);
         }
 
-        public AutomationPracticeCreateAccountPage ClickOnCreateAccountButton()
+        public APCreateAccountPage ClickOnCreateAccountButton()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("SubmitCreate"))).Click(); ;
 
-            return new AutomationPracticeCreateAccountPage(Driver);
+            return new APCreateAccountPage(Driver);
         }
 
         public void FillSignInForm(string email, string password)
@@ -62,11 +62,11 @@ namespace PageObjectModel.Components.Authentication
             PasswordAlreadyInput.SendKeys(password);
         }
 
-        public AutomationPracticeMyAccountPage ClickOnSignInButton()
+        public APMyAccountPage ClickOnSignInButton()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("SubmitLogin"))).Click();
 
-            return new AutomationPracticeMyAccountPage(Driver);
+            return new APMyAccountPage(Driver);
         }
 
         public string IsErrorBannerDisplayed()

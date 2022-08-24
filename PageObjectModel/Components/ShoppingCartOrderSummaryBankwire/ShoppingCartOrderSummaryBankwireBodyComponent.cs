@@ -35,11 +35,11 @@ namespace PageObjectModel.Components.ShoppingCartOrderSummaryBankwire
             }
         }
 
-        public AutomationPracticeShoppingCartOrderSummaryBankwirePage ClickOnConfirmOrderButton()
+        public APShoppingCartOrderSummaryBankwirePage ClickOnConfirmOrderButton()
         {
             ConfirmOrderButton.Click();
 
-            return new AutomationPracticeShoppingCartOrderSummaryBankwirePage(Driver);
+            return new APShoppingCartOrderSummaryBankwirePage(Driver);
         }
     }
 }

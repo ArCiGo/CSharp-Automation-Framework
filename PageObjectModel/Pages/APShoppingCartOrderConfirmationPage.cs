@@ -5,7 +5,7 @@ using System;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeShoppingCartOrderConfirmationPage : BasePage
+    public class APShoppingCartOrderConfirmationPage : BasePage
     {
         // Attributes
         private readonly WebDriverWait wait;
@@ -14,7 +14,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeShoppingCartOrderConfirmationPage(IWebDriver driver) : base(driver)
+        public APShoppingCartOrderConfirmationPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartOrderConfirmationBodyComponent = new ShoppingCartOrderConfirmationBodyComponent(Driver);

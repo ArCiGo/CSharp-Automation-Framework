@@ -5,7 +5,7 @@ using System;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeMyAccountPage : BasePage
+    public class APMyAccountPage : BasePage
     {
         // Attributes
         private readonly MyAccountBodyComponent myAccountBodyComponent;
@@ -14,7 +14,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeMyAccountPage(IWebDriver driver) : base(driver)
+        public APMyAccountPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             myAccountBodyComponent = new MyAccountBodyComponent(driver);

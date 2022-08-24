@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace PageObjectModel.Pages
 {
-    public class AutomationPracticeCreateAccountPage : BasePage
+    public class APCreateAccountPage : BasePage
     {
         // Attributes
         private readonly CreateAccountBodyComponent createAccountBodyComponent;
@@ -16,7 +16,7 @@ namespace PageObjectModel.Pages
         // Elements
 
         // Constructor
-        public AutomationPracticeCreateAccountPage(IWebDriver driver) : base(driver)
+        public APCreateAccountPage(IWebDriver driver) : base(driver)
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             createAccountBodyComponent = new CreateAccountBodyComponent(driver);
@@ -33,7 +33,7 @@ namespace PageObjectModel.Pages
             createAccountBodyComponent.FillRegisterForm(personalData);
         }
 
-        public AutomationPracticeMyAccountPage ClickOnRegisterButton()
+        public APMyAccountPage ClickOnRegisterButton()
         {
             return createAccountBodyComponent.ClickRegisterButton();
         }

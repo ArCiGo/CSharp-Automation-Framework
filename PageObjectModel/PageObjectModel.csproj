@@ -8,6 +8,16 @@
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Serilog" Version="2.11.0" />
+    <PackageReference Include="ExtentReports" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Serilog" />
+    <None Remove="ExtentReports" />
+    <None Remove="Serilog.Sinks.File" />
+    <None Remove="Serilog.Sinks.Console" />
+  </ItemGroup>
 </Project>
