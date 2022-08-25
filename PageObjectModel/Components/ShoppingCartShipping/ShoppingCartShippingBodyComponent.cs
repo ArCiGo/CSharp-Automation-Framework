@@ -16,26 +16,9 @@ namespace PageObjectModel.Components.ShoppingCartShipping
         public IWebElement CheckoutButton => Driver.FindElement(By.Name("processCarrier"));
 
         // Constructor
-        public ShoppingCartShippingBodyComponent(IWebDriver driver) : base(driver)
-        {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-        }
+        public ShoppingCartShippingBodyComponent(IWebDriver driver) : base(driver) { }
 
         // Actions
-        public bool IsLoaded()
-        {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("page-heading"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // here goes the logger
-
-                return false;
-            }
-        }
-
         public void CheckTermsOfServiceCheckbox()
         {
             TermsOfServiceCheckbox.Click();

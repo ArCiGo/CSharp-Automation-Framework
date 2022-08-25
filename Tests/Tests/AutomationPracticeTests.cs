@@ -20,25 +20,18 @@ namespace Tests.Tests
         public void CreateNewUserWithValidData()
         {
             // Storage of email address and password to use them in the following tests
-            EmailAddress = Mocks.personalData[0].Email;
-            Password = Mocks.personalData[0].Password;
+            EmailAddress = Mocks.personalData.Email;
+            Password = Mocks.personalData.Password;
 
-            apHomePage = new APHomePage(Driver);
             apHomePage.GoTo(baseURL);
-            Assert.IsTrue(apHomePage.IsLoaded());
             apHomePage.ClickOnSignInButton();
 
-            apAuthenticationPage = new APAuthenticationPage(Driver);
-            Assert.IsTrue(apAuthenticationPage.IsLoaded());
             apAuthenticationPage.FillCreateAccount(EmailAddress);
             apAuthenticationPage.ClickOnCreateAccountButton();
 
-            apCreateAccountPage = new APCreateAccountPage(Driver);
-            Assert.IsTrue(apCreateAccountPage.IsLoaded());
             apCreateAccountPage.FillRegisterForm(Mocks.personalData);
             apCreateAccountPage.ClickOnRegisterButton();
 
-            apMyAccountPage = new APMyAccountPage(Driver);
             Assert.IsTrue(apMyAccountPage.IsLoaded());
         }
 
@@ -46,17 +39,12 @@ namespace Tests.Tests
         [Order(2)]
         public void LoginWithAValidUser()
         {
-            apHomePage = new APHomePage(Driver);
             apHomePage.GoTo(baseURL);
-            Assert.IsTrue(apHomePage.IsLoaded());
             apHomePage.ClickOnSignInButton();
 
-            apAuthenticationPage = new APAuthenticationPage(Driver);
-            Assert.IsTrue(apAuthenticationPage.IsLoaded());
             apAuthenticationPage.FillSignInForm(EmailAddress, Password);
             apAuthenticationPage.ClickOnSignInButton();
 
-            apMyAccountPage = new APMyAccountPage(Driver);
             Assert.IsTrue(apMyAccountPage.IsLoaded());
         }
 
@@ -64,15 +52,12 @@ namespace Tests.Tests
         [Order(3)]
         public void LoginWithAnInvalidUser()
         {
-            apHomePage = new APHomePage(Driver);
             apHomePage.GoTo(baseURL);
-            Assert.IsTrue(apHomePage.IsLoaded());
             apHomePage.ClickOnSignInButton();
 
-            apAuthenticationPage = new APAuthenticationPage(Driver);
-            Assert.IsTrue(apAuthenticationPage.IsLoaded());
-            apAuthenticationPage.FillSignInForm(Mocks.invalidPersonalData[0].Email, Mocks.invalidPersonalData[0].Password);
+            apAuthenticationPage.FillSignInForm(Mocks.invalidPersonalData.Email, Mocks.invalidPersonalData.Password);
             apAuthenticationPage.ClickOnSignInButton();
+
             Assert.AreEqual(apAuthenticationPage.IsErrorBannerDisplayed(), "Authentication failed.");
         }
 
@@ -80,20 +65,14 @@ namespace Tests.Tests
         [Order(4)]
         public void LogoutWithAValidUser()
         {
-            apHomePage = new APHomePage(Driver);
             apHomePage.GoTo(baseURL);
-            Assert.IsTrue(apHomePage.IsLoaded());
             apHomePage.ClickOnSignInButton();
 
-            apAuthenticationPage = new APAuthenticationPage(Driver);
-            Assert.IsTrue(apAuthenticationPage.IsLoaded());
             apAuthenticationPage.FillSignInForm(EmailAddress, Password);
             apAuthenticationPage.ClickOnSignInButton();
 
-            apMyAccountPage = new APMyAccountPage(Driver);
             Assert.IsTrue(apMyAccountPage.IsLoaded());
             apHomePage.ClickOnSignOutButton();
-            Assert.IsTrue(apAuthenticationPage.IsLoaded());
         }
 
         [Test(Description = "It adds multiple items to the shopping cart"), Category("UI")]
@@ -102,40 +81,25 @@ namespace Tests.Tests
         {
             List<string> clothes = new List<string> { "Faded Short Sleeve T-shirts", "Printed Chiffon Dress" };
 
-            apHomePage = new APHomePage(Driver);
             apHomePage.GoTo(baseURL);
-            Assert.IsTrue(apHomePage.IsLoaded());
-            apHomePage.AddItemsToCart(clothes);
+            apHomePage.AddItemsToCart(Mocks.clothes);
             apHomePage.ClickOnCartLinkButton();
 
-            apShoppingCartSummaryPage = new APShoppingCartSummaryPage(Driver);
-            Assert.True(apShoppingCartSummaryPage.IsLoaded());
-            Assert.IsTrue(apShoppingCartSummaryPage.IsOnShoppingCart(clothes));
+            Assert.IsTrue(apShoppingCartSummaryPage.IsOnShoppingCart(Mocks.clothes));
             apShoppingCartSummaryPage.ClickOnCheckoutButton();
 
-            apAuthenticationPage = new APAuthenticationPage(Driver);
-            Assert.True(apAuthenticationPage.IsLoaded());
             apAuthenticationPage.FillSignInForm("eduardo.gonzalez@wolterskluwer.com", "Pa$$w0rd!");
             apAuthenticationPage.ClickOnSignInButton();
 
-            apShoppingCartAddressPage = new APShoppingCartAddressesPage(Driver);
-            Assert.True(apShoppingCartAddressPage.IsLoaded());
             apShoppingCartAddressPage.ClickOnCheckOutButton();
 
-            apShoppingCartShippingPage = new APShoppingCartShippingPage(Driver);
-            Assert.True(apShoppingCartShippingPage.IsLoaded());
             apShoppingCartShippingPage.CheckTermsOfServiceCheckbox();
             apShoppingCartShippingPage.ClickOnCheckoutButton();
 
-            apShoppingCartPaymentMethodPage = new APShoppingCartPaymentMethodPage(Driver);
-            Assert.True(apShoppingCartPaymentMethodPage.IsLoaded());
             apShoppingCartPaymentMethodPage.ClickOnBankwireButton();
 
-            apShoppingCartOrderSummaryBWP = new APShoppingCartOrderSummaryBankwirePage(Driver);
-            Assert.True(apShoppingCartOrderSummaryBWP.IsLoaded());
             apShoppingCartOrderSummaryBWP.ClickOnConfirmOrderButton();
 
-            apShoppingCartOrderConfirmationPage = new APShoppingCartOrderConfirmationPage(Driver);
             Assert.True(apShoppingCartOrderConfirmationPage.IsLoaded());
             Assert.AreEqual("Your order on My Store is complete.", apShoppingCartOrderConfirmationPage.GetOrderConfirmationText());
         }

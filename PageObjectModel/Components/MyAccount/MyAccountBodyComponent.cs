@@ -20,16 +20,7 @@ namespace PageObjectModel.Components.MyAccount
         // Actions
         public bool IsLoaded()
         {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'My acc')]"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // here goes the logger
-
-                return false;
-            }
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'My acc')]"))).Displayed;
         }
     }
 }

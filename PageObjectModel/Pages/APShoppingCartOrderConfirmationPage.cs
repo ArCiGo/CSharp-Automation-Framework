@@ -8,7 +8,6 @@ namespace PageObjectModel.Pages
     public class APShoppingCartOrderConfirmationPage : BasePage
     {
         // Attributes
-        private readonly WebDriverWait wait;
         private readonly ShoppingCartOrderConfirmationBodyComponent shoppingCartOrderConfirmationBodyComponent;
 
         // Elements
@@ -16,7 +15,6 @@ namespace PageObjectModel.Pages
         // Constructor
         public APShoppingCartOrderConfirmationPage(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartOrderConfirmationBodyComponent = new ShoppingCartOrderConfirmationBodyComponent(Driver);
         }
 

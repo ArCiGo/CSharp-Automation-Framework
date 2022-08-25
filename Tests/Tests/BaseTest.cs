@@ -51,7 +51,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            Log.Information("SetUp has started");
+            Log.Information("SetUp() has started");
 
             test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
             var factory = new WebDriverFactory();
@@ -81,7 +81,7 @@ namespace Tests
         [TearDown]
         public void CleanUp()
         {
-            Log.Information("CleanUp has started");
+            Log.Information("CleanUp() has started");
 
             try
             {

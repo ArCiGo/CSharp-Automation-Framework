@@ -22,16 +22,7 @@ namespace PageObjectModel.Components.ShoppingCartOrderConfirmation
         // Actions
         public bool IsLoaded()
         {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("page-heading"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // Here goes the logger
-
-                return false;
-            }
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("page-heading"))).Displayed;
         }
 
         public string GetOrderConfirmationText()

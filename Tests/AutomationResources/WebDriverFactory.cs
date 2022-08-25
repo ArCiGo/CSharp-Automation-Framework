@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using Serilog;
 using System;
 
 namespace Tests.AutomationResources
@@ -12,14 +13,18 @@ namespace Tests.AutomationResources
             switch (browserType)
             {
                 case BrowserType.Chrome:
-                    // logger
+                    Log.Information("*** ChromeDriver was initialized ***");
                     return GetChromeDriver();
                 case BrowserType.Firefox:
-                    // logger
+                    Log.Information("*** GeckoDriver was initialized ***");
                     return GetFirefoxDriver();
                 default:
                     ArgumentException ex = new ArgumentException("No such browser exists!");
-                    // more loggers
+                    Log.Error(ex.Source);
+                    Log.Error(ex.StackTrace);
+                    Log.Error(ex.InnerException.ToString());
+                    Log.Error(ex.Message);
+
                     throw ex;
             }
         }

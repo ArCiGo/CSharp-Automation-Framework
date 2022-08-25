@@ -8,7 +8,6 @@ namespace PageObjectModel.Pages
     public class APShoppingCartShippingPage : BasePage
     {
         // Attributes
-        private readonly WebDriverWait wait;
         private readonly ShoppingCartShippingBodyComponent shoppingCartShippingBodyComponent;
 
         // Elements
@@ -16,16 +15,10 @@ namespace PageObjectModel.Pages
         // Constructor
         public APShoppingCartShippingPage(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             shoppingCartShippingBodyComponent = new ShoppingCartShippingBodyComponent(Driver);
         }
 
         // Actions
-        public bool IsLoaded()
-        {
-            return shoppingCartShippingBodyComponent.IsLoaded();
-        }
-
         public void CheckTermsOfServiceCheckbox()
         {
             shoppingCartShippingBodyComponent.CheckTermsOfServiceCheckbox();

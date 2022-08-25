@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Models;
 using PageObjectModel.Pages;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -63,92 +64,69 @@ namespace PageObjectModel.Components.CreateAccount
         }
 
         // Actions
-        public bool IsLoaded()
-        {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'Create')]"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // Here goes the logger
-
-                return false;
-            }
-        }
-
         public bool TitleRadioButtonsIsLoaded()
         {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("id_gender1"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // Here goes the logger
-
-                return false;
-            }
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("id_gender1"))).Displayed;
         }
 
-        public void FillRegisterForm(List<PersonModel> personalData)
+        public void FillRegisterForm(PersonModel personalData)
         {
-            SelectTitle(personalData[0].Title);
+            SelectTitle(personalData.Title);
 
             FirstNameInput.Clear();
-            FirstNameInput.SendKeys(personalData[0].FirstName);
+            FirstNameInput.SendKeys(personalData.FirstName);
 
             LastNameInput.Clear();
-            LastNameInput.SendKeys(personalData[0].LastName);
+            LastNameInput.SendKeys(personalData.LastName);
 
             EmailInput.Clear();
-            EmailInput.SendKeys(personalData[0].Email);
+            EmailInput.SendKeys(personalData.Email);
 
             PasswordInput.Clear();
-            PasswordInput.SendKeys(personalData[0].Password);
+            PasswordInput.SendKeys(personalData.Password);
 
-            SetDay(personalData[0].Day);
+            SetDay(personalData.Day);
 
-            SetMonth(personalData[0].Month);
+            SetMonth(personalData.Month);
 
-            SetYear(personalData[0].Year);
+            SetYear(personalData.Year);
 
             AddressFirstNameInput.Clear();
-            AddressFirstNameInput.SendKeys(personalData[0].FirstNameAddress);
+            AddressFirstNameInput.SendKeys(personalData.FirstNameAddress);
 
             AddressLastNameInput.Clear();
-            AddressLastNameInput.SendKeys(personalData[0].LastNameAddress);
+            AddressLastNameInput.SendKeys(personalData.LastNameAddress);
 
             CompanyInput.Clear();
-            CompanyInput.SendKeys(personalData[0].Company);
+            CompanyInput.SendKeys(personalData.Company);
 
             AddressInput.Clear();
-            AddressInput.SendKeys(personalData[0].Address);
+            AddressInput.SendKeys(personalData.Address);
 
             AddressLine2Input.Clear();
-            AddressLine2Input.SendKeys(personalData[0].AddressLine2);
+            AddressLine2Input.SendKeys(personalData.AddressLine2);
 
             CityInput.Clear();
-            CityInput.SendKeys(personalData[0].City);
+            CityInput.SendKeys(personalData.City);
 
-            SetState(personalData[0].State);
+            SetState(personalData.State);
 
             ZipCodeInput.Clear();
-            ZipCodeInput.SendKeys(personalData[0].ZipCode.ToString());
+            ZipCodeInput.SendKeys(personalData.ZipCode.ToString());
 
-            SetCountry(personalData[0].Country);
+            SetCountry(personalData.Country);
 
             AdditionalInformationTextarea.Clear();
-            AdditionalInformationTextarea.SendKeys(personalData[0].AdditionalInformation);
+            AdditionalInformationTextarea.SendKeys(personalData.AdditionalInformation);
 
             HomePhone.Clear();
-            HomePhone.SendKeys(personalData[0].HomePhone);
+            HomePhone.SendKeys(personalData.HomePhone);
 
             MobilePhone.Clear();
-            MobilePhone.SendKeys(personalData[0].MobilePhone);
+            MobilePhone.SendKeys(personalData.MobilePhone);
 
             Alias.Clear();
-            Alias.SendKeys(personalData[0].AddressAlias);
+            Alias.SendKeys(personalData.AddressAlias);
         }
 
         private void SelectTitle(Title title)
@@ -165,7 +143,7 @@ namespace PageObjectModel.Components.CreateAccount
                     break;
                 default:
                     ArgumentException ex = new ArgumentException("No such option exists!");
-                    // here goes the logger
+                    Log.Error(ex.ToString());
 
                     throw ex;
             }

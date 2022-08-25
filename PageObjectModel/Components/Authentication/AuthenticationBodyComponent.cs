@@ -26,20 +26,6 @@ namespace PageObjectModel.Components.Authentication
         }
 
         // Actions
-        public bool IsLoaded()
-        {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'Authen')]"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // Here goes the logger
-
-                return false;
-            }
-        }
-
         public void FillCreateAccountForm(string email)
         {
             EmailAddressCreateInput.Clear();

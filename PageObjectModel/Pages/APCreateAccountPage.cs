@@ -11,24 +11,17 @@ namespace PageObjectModel.Pages
     {
         // Attributes
         private readonly CreateAccountBodyComponent createAccountBodyComponent;
-        private readonly WebDriverWait wait;
 
         // Elements
 
         // Constructor
         public APCreateAccountPage(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             createAccountBodyComponent = new CreateAccountBodyComponent(driver);
         }
 
         // Actions
-        public bool IsLoaded()
-        {
-            return createAccountBodyComponent.IsLoaded();
-        }
-
-        public void FillRegisterForm(List<PersonModel> personalData)
+        public void FillRegisterForm(PersonModel personalData)
         {
             createAccountBodyComponent.FillRegisterForm(personalData);
         }

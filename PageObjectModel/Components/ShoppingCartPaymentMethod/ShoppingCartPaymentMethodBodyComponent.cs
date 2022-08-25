@@ -15,26 +15,9 @@ namespace PageObjectModel.Components.ShoppingCartPaymentMethod
         public IWebElement BankwireButton => Driver.FindElement(By.XPath("//a[contains(@class, 'bankwire')]"));
 
         // Constructor
-        public ShoppingCartPaymentMethodBodyComponent(IWebDriver driver) : base(driver) 
-        {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-        }
+        public ShoppingCartPaymentMethodBodyComponent(IWebDriver driver) : base(driver) { }
 
         // Actions
-        public bool IsLoaded()
-        {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("page-heading"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // here goes the logger
-
-                return false;
-            }
-        }
-
         public APShoppingCartOrderConfirmationPage ClickOnBankwireButton()
         {
             BankwireButton.Click();

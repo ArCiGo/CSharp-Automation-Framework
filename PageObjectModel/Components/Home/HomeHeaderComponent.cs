@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PageObjectModel.Pages;
+using Serilog;
 using System;
 
 namespace PageObjectModel.Components.Home
@@ -19,22 +20,13 @@ namespace PageObjectModel.Components.Home
         // Constructor
         public HomeHeaderComponent(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         // Actions
         public bool IsLoaded()
         {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@class='logo img-responsive']"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // Here goes the logger
-
-                return false;
-            }
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@class='logo img-responsive']"))).Displayed;
         }
 
         public APAuthenticationPage ClickOnSignInButton()

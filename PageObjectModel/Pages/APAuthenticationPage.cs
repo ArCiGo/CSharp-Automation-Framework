@@ -9,23 +9,16 @@ namespace PageObjectModel.Pages
     {
         // Attributes
         private readonly AuthenticationBodyComponent authenticationBodyComponent;
-        private readonly WebDriverWait wait;
 
         // Elements
 
         // Constructor
         public APAuthenticationPage(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             authenticationBodyComponent = new AuthenticationBodyComponent(driver);
         }
 
         // Actions
-        public bool IsLoaded()
-        {
-            return authenticationBodyComponent.IsLoaded();
-        }
-
         public void FillCreateAccount(string email)
         {
             authenticationBodyComponent.FillCreateAccountForm(email);

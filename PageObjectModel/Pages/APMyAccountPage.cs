@@ -9,14 +9,12 @@ namespace PageObjectModel.Pages
     {
         // Attributes
         private readonly MyAccountBodyComponent myAccountBodyComponent;
-        private readonly WebDriverWait wait;
 
         // Elements
 
         // Constructor
         public APMyAccountPage(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             myAccountBodyComponent = new MyAccountBodyComponent(driver);
         }
 

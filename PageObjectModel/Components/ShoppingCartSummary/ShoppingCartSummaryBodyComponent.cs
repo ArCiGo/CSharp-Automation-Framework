@@ -9,7 +9,6 @@ namespace PageObjectModel.Components.ShoppingCartSummary
     public class ShoppingCartSummaryBodyComponent : AutomationPracticeComponent
     {
         // Attributes
-        private readonly WebDriverWait wait;
 
         // Elements
         public IWebElement TitleLabel => Driver.FindElement(By.Id("cart_title"));
@@ -17,26 +16,9 @@ namespace PageObjectModel.Components.ShoppingCartSummary
         public IWebElement CheckoutButton => Driver.FindElement(By.CssSelector("p[class='cart_navigation clearfix'] a[title^='Proceed']"));
 
         // Constructor
-        public ShoppingCartSummaryBodyComponent(IWebDriver driver) : base(driver)
-        {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-        }
+        public ShoppingCartSummaryBodyComponent(IWebDriver driver) : base(driver) { }
 
         // Actions
-        public bool IsLoaded()
-        {
-            try
-            {
-                return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[@class='page-heading'][contains(text(), 'Shopping')]"))).Displayed;
-            }
-            catch (Exception ex)
-            {
-                // here goes the logger
-
-                return false;
-            }
-        }
-
         public bool IsOnShoppingCart(List<string> clothes)
         {
             for(int i = 0; i < clothes.Count; i++)
