@@ -60,13 +60,13 @@ namespace PageObjectModel.Components.CreateAccount
         // Constructor
         public CreateAccountBodyComponent(IWebDriver driver) : base(driver)
         {
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         // Actions
-        public bool TitleRadioButtonsIsLoaded()
+        public bool TitleGenderLabelIsLoaded()
         {
-            return wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("id_gender1"))).Displayed;
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='clearfix']/label"))).Displayed;
         }
 
         public void FillRegisterForm(PersonModel personalData)
@@ -131,7 +131,7 @@ namespace PageObjectModel.Components.CreateAccount
 
         private void SelectTitle(Title title)
         {
-            TitleRadioButtonsIsLoaded();
+            TitleGenderLabelIsLoaded();
 
             switch (title)
             {

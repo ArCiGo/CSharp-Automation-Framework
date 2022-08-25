@@ -27,6 +27,7 @@ The **Automation Practice** store was automated using *C# + Selenium*. It genera
 
 ## Project folder structure 🗂️
 
+```bash
 .
 ├── PageObjectModel/
 │   ├── Components/
@@ -50,6 +51,7 @@ The **Automation Practice** store was automated using *C# + Selenium*. It genera
     ├── Models
     ├── Tests
     └── Utilities
+```
 
 ## Setup 🛠️
 
@@ -69,6 +71,8 @@ https://github.com/ArCiGo/CSharp-Automation-Framework.git
 dotnet build
 ```
 
+3. Don't forget to update the *Selenium WebDriver ChromeDriver* and the *Selenium WebDriver GeckoDriver*.
+
 ## Run the tests ⚡️
 
 ```bash
@@ -83,4 +87,10 @@ dotnet test
 dotnet test --filter TestCategory=UI
 ```
 
-When you execute the tests, new folders are generated at the workspace root (APIReports and UIReports). Inside of these folders, you are going to see the index.html reports (you can open them using your favorite browser). Also, new log files are generated (APIlogs-^.txt, APIlogs-^.txt) and you can open them using any text editor.
+When you execute the tests, new folders are generated at the workspace root (**APIReports** and **UIReports**). Inside of these folders, you are going to see the *index.html* reports (you can open them using your favorite browser). Also, new log files are generated (*APIlogs-^.txt*, *UIlogs-^.txt*) and you can open them using any text editor.
+
+![UI Report Sample 1](./Image02.png)
+
+![UI Report Sample 2](./Image03.png)
+
+![Log Report Sample](./Image01.png)

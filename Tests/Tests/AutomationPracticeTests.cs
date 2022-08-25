@@ -11,18 +11,15 @@ namespace Tests.Tests
         // Attributes
 
         // Properties
-        public string EmailAddress { get; set; }
-        public string Password { get; set; }
+        // Storage of email address and password to use them in the following tests
+        private string EmailAddress = Mocks.personalData.Email;
+        private string Password = Mocks.personalData.Password;
 
         // Tests
         [Test(Description = "It creates a new user in the store"), Category("UI")]
         [Order(1)]
         public void CreateNewUserWithValidData()
         {
-            // Storage of email address and password to use them in the following tests
-            EmailAddress = Mocks.personalData.Email;
-            Password = Mocks.personalData.Password;
-
             apHomePage.GoTo(baseURL);
             apHomePage.ClickOnSignInButton();
 
