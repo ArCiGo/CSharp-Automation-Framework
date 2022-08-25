@@ -79,8 +79,6 @@ namespace Tests.Tests
         [Order(5)]
         public void AddingMultipleItemsToCart()
         {
-            List<string> clothes = new List<string> { "Faded Short Sleeve T-shirts", "Printed Chiffon Dress" };
-
             apHomePage.GoTo(baseURL);
             apHomePage.AddItemsToCart(Mocks.clothes);
             apHomePage.ClickOnCartLinkButton();

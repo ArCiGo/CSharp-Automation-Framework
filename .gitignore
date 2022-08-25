@@ -704,5 +704,6 @@ UIReports/
 APIReports/
 **/.DS_Store
 *.txt
+.vscode
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore,aspnetcore,csharp
