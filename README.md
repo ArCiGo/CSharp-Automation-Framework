@@ -54,35 +54,39 @@ The following steps can be executed using a terminal (I use [hyper](https://hype
 1. Clone the repo.-
 
 ```bash
-https://github.com/ArCiGo/CSharp-Automation-Framework.git
+> https://github.com/ArCiGo/CSharp-Automation-Framework.git
+
+> git checkout master
 ```
 
 2. Install the packages.-
 
 ```bash
-dotnet build
+> dotnet build
 ```
 
 3. Don't forget to update the *Selenium WebDriver ChromeDriver* and the *Selenium WebDriver GeckoDriver*.
+
+4. Delete the folders, files or branches you don't need.
 
 ## Run the tests ⚡️
 
 ```bash
 # Run all the tests
-dotnet test
+> dotnet test
 ```
 
 ```bash
 # Running the tests by category
 
 # UI tests
-dotnet test --filter TestCategory=UI
+> dotnet test --filter TestCategory=UI
 
 # API test
-dotnet test --filter TestCategory=API
+> dotnet test --filter TestCategory=API
 
 # CSV test
-dotnet test --filter TestCategory=CSV
+> dotnet test --filter TestCategory=CSV
 ```
 
 When you execute the tests, new folders are generated at the workspace root (**APIReports** and **UIReports**). Inside of these folders, you are going to see the *index.html* reports (you can open them using your favorite browser). Also, new log files are generated (*APIlogs-^.txt*, *UIlogs-^.txt*) and you can open them using any text editor.
