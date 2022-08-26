@@ -704,3 +704,4 @@ UIReports/
 APIReports/
 **/.DS_Store
 *.txt
+.vscode
