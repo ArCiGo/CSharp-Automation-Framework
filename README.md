@@ -1,10 +1,10 @@
 # Automation framework made with C# + Selenium
 
-The goal of this project was to put into practice my knowledge of Selenium using C#.
+The goal of this project was to put into practice my knowledge of *Selenium* using *C#*.
 
 ## The project 💻
 
-The **Automation Practice** store was automated using *C# + Selenium*. It generates a report for passed and failed tests.
+The **Automation Practice** store was automated using *C# + Selenium*.
 
 ## Tools ⚙️
 
@@ -63,6 +63,8 @@ The following steps can be executed using a terminal (I use [hyper](https://hype
 
 ```bash
 https://github.com/ArCiGo/CSharp-Automation-Framework.git
+
+git checkout SampleProject_1
 ```
 
 2. Install the packages.-
@@ -81,13 +83,13 @@ dotnet test
 ```
 
 ```bash
-# Running the tests by category
-# UI tests
+# Running tests by category
 
+# UI tests
 dotnet test --filter TestCategory=UI
 ```
 
-When you execute the tests, new folders are generated at the workspace root (**APIReports** and **UIReports**). Inside of these folders, you are going to see the *index.html* reports (you can open them using your favorite browser). Also, new log files are generated (*APIlogs-^.txt*, *UIlogs-^.txt*) and you can open them using any text editor.
+When you execute the tests, new folders are generated at the workspace root (**UIReports**). Inside of these folders, you are going to see the *index.html* report (you can open them using your favorite browser). Also, new log file is generated (*UIlogs-^.txt*) and you can open them using any text editor.
 
 ![UI Report Sample 1](./Image02.png)
 
