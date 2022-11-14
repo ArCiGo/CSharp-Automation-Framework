@@ -4,7 +4,7 @@
 
 A *C# + Selenium* template to create new automation framework projects!
 
-**Before you continue reading:** You can check in this repository a [full sample](https://github.com/ArCiGo/CSharp-Automation-Framework/tree/master) made based on this template.
+**Before you continue reading:** You can check in this repository a [full sample](https://github.com/ArCiGo/CSharp-Automation-Framework/tree/SampleProject_1) made based on this template.
 
 ## Tools ⚙️
 
