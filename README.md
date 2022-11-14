@@ -2,6 +2,8 @@
 
 The goal of this project was to put into practice my knowledge of *Selenium* using *C#*.
 
+*Do you want to create a framework based on this project? Check this [branch](https://github.com/ArCiGo/CSharp-Automation-Framework/tree/master)!*
+
 ## The project 💻
 
 The **Automation Practice** store was automated using *C# + Selenium*.
